@@ -4,23 +4,21 @@
   "description": "CodeCorgi is a place to showcase your developer profile",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/.bin/mocha --reporter spec",
+    "test": "./node_modules/mocha/bin/mocha --reporter spec",
     "start": "nodemon -e '.js' index.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://gitlab.com/codecorgi/site.git"
+    "url": "git@github.com:corgicode/api.git"
   },
   "author": "",
   "license": "UNLICENSED",
   "private": true,
   "bugs": {
-    "url": "https://gitlab.com/codecorgi/site/issues"
+    "url": "https://github.com/corgicode/api/issues"
   },
-  "homepage": "https://gitlab.com/codecorgi/site#README",
+  "homepage": "https://github.com/corgicode/api",
   "dependencies": {
-    "@types/mongoose": "^4.7.17",
-    "@types/node": "^7.0.22",
     "bluebird": "^3.4.7",
     "body-parser": "^1.16.0",
     "connect-logger": "0.0.1",
