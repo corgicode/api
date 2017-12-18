@@ -1,0 +1,9 @@
+node_modules
+nodemon.json
+npm-debug.log
+ecosystem.config.js
+.vagrant
+docs/api
+jsconfig.json
+typings.json
+typings/
