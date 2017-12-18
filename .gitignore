@@ -7,3 +7,4 @@ docs/api
 jsconfig.json
 typings.json
 typings/
+mongo/data
