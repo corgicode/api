@@ -53,11 +53,11 @@ const userSchema = new Schema({
   }
 });
 
-userSchema.virtual('profile_url').get(function() {  
+userSchema.virtual('profile_url').get(function() {
     return `/profile/${this.username}`;
 });
 
-userSchema.statics.groom = (user, restrict) => {
+userSchema.statics.tidy = (user, restrict) => {
   if (!user) {
     return {};
   }

@@ -13,7 +13,7 @@ module.exports = () => {
     MONGO_DB = 'mongodb://localhost/codecorgidata';
   }
 
-  mongoose.connect(MONGO_DB);
+  mongoose.connect(MONGO_DB, { useMongoClient: true });
 
   db.on('error', console.error.bind(console, 'connection error:'));
 

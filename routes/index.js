@@ -3,20 +3,12 @@
  * @requires express.Router
  * @author codecorgi
  * @namespace Router
- * @todo Require an apikey header
  */
 
-// https://www.npmjs.com/package/jsdoc-route-plugin //
 const routes = require('express').Router();
-
-/**
- * Controllers call the models and handle the requests
- * require the index and all the controllers will be available
- * there as properties
- * @example const submitController = controllers.submit
- */
 const controllers = require('../controllers');
 const config = require('../config');
+
 
 const submitController = controllers.submit;
 const profileController = controllers.profile;
@@ -29,16 +21,9 @@ const checkAdmin = [(req, res, next) => {
   if (req.get('apikey') === config.ADMIN_API_KEY) {
     return next();
   }
-  return res.status(401).send({ message: 'a valid api key is needed for this request' });
+  return res.status(401).send({ message: 'A valid api key is needed for this request' });
 }];
-/**
- * Submit the answer for a challenge
- *
- * @name New Submit
- * @route {POST} /api/submit
- * @authentication Required
- * @memberof Router
- */
+
 routes.post('/submit', submitController.new);
 routes.get('/submit/get', submitController.get);
 routes.get('/submit/all', submitController.getAll);
@@ -50,9 +35,9 @@ routes.get('/profile/info', profileController.info);
 routes.get('/profile/info/:id', profileController.get);
 routes.put('/profile', profileController.update);
 
-routes.get('/user/all', checkAdmin, userController.getAll);
+// routes.get('/user/all', checkAdmin, userController.getAll);
+routes.get('/users', checkAdmin, userController.getAll);
 routes.get('/user/:id', checkAdmin, userController.findById);
-
 
 routes.post('/challenge', checkAdmin, challengeController.new);
 routes.get('/challenge/all', challengeController.getAll);

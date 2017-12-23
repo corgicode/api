@@ -1,11 +1,11 @@
-/** 
+/**
  * defines a few interceptors that can catch every
  * request or response to insert metadata
  * or perform cleaning
  */
 const interceptor = require('express-interceptor');
 
-const version = require('../package.json').version;
+const version = require('../config').VERSION;
 
 module.exports = (app) => {
   app.use(interceptor((req, res) => {
@@ -21,7 +21,7 @@ module.exports = (app) => {
             duration: `${Date.now() - req.start}ms`,
             status: res.statusCode,
           },
-          response: parsed
+          response: parsed,
         };
         return send(JSON.stringify(data));
       },

@@ -12,10 +12,16 @@ const GITHUB_APP_NAME = Helpers.getEnv('GITHUB_APP_NAME');
 
 const ADMIN_API_KEY = Helpers.getEnv('ADMIN_API_KEY');
 
+const BASE_URL = Helpers.getEnv('BASE_URL', 'http://localhost:3000/');
+
+const VERSION = require('../package.json').version;
+
 module.exports = {
   GITHUB_CLIENT_ID,
   GITHUB_CLIENT_SECRET,
   GITHUB_CALLBACK_URL,
   GITHUB_APP_NAME,
   ADMIN_API_KEY,
+  VERSION,
+  BASE_URL,
 }
