@@ -1,37 +1,17 @@
 const ChallengeModel = require('../../models/challenge');
 const cache = require('../../config/redis');
-
-const newChallenge = (req, res) => {
-  if (!req.user || !req.user._id) {
-    return res.status(401).send({ error: 'must login to send a submission' });
-  }
-  if (!req.body.data) {
-    return res.status(422).send({ error: 'challenge data is missing' });
-  }
-  const data = req.body.data || {};
-  data._user = req.user._id;
-
-  const challenge = new ChallengeModel(data);
-  challenge.save().then((doc) => {
-    cache.del('cc_html_challenges');
-    res.status(200).send({ data, doc });
-  }).catch((err) => {
-    res.status(500).send({ error: err });
-  });
-};
+const ChallengeSerializer = require('../../serializers').challenges;
+const ErrorsSerializer = require('../../serializers').errors;
 
 const update = (req, res) => {
-  if (!req.params.id) {
-    return res.status(422).send({ error: 'Missing challenge id' });
-  }
-  const data = req.body.data;
+  const data = req.body.data.attributes;
   ChallengeModel.findById(req.params.id).then((doc) => {
     const obj = Object.assign(doc, data);
     return obj.save();
   }).then((doc) => {
     cache.del('cc_html_challenges');
-    cache.del(`cc_html_challenge_${doc.number}`);
-    res.send({ doc });
+    cache.del(`cc_html_challenge_${doc.id}`);
+    res.send(ChallengeSerializer(doc));
   });
 };
 
@@ -41,27 +21,36 @@ const getAll = (req, res) => {
       console.log(err);
     } else {
       console.log('Retrieved submissions', list.length);
-      res.send(list);
+      res.send(ChallengeSerializer(list));
     }
   });
 };
 
 const getById = (req, res) => {
-  if (!req.params.id) {
-    return res.status(422).send({ error: 'Missing challenge id' });
-  }
   ChallengeModel.findById(req.params.id).then((doc) => {
     console.log('Retrieved challenge: ', req.params.id);
-    return res.send({ doc });
+    return res.send(ChallengeSerializer(doc));
   }).catch((err) => {
-    console.log(err);
-    return res.status(503).send(err);
+    return res.status(503).send(ErrorsSerializer(err));
+  });
+};
+
+const post = (req, res) => {
+  const data = req.body.attributes || {};
+  data._user = req.user._id;
+
+  const challenge = new ChallengeModel(data);
+  challenge.save().then((doc) => {
+    cache.del('cc_challenges');
+    res.status(201).send(ChallengeSerializer(doc));
+  }).catch((err) => {
+    res.status(500).send(ErrorsSerializer(err))
   });
 };
 
 module.exports = {
-  new: newChallenge,
   getAll,
   getById,
   update,
+  post,
 };
