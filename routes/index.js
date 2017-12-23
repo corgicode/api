@@ -51,9 +51,9 @@ routes.get('/submit/single/:id', submitController.getById);
 routes.get('/submit/comments/:id', submitController.getByIdWithComments);
 routes.get('/submit/user/:user_id', submitController.findByUser);
 
-routes.get('/profile/info', profileController.info);
+routes.get('/profile', checkLogin, profileController.info);
 routes.get('/profile/info/:id', profileController.get);
-routes.put('/profile', profileController.update);
+routes.put('/profile', checkLogin, profileController.update);
 
 // routes.get('/user/all', checkAdmin, userController.getAll);
 routes.get('/users', checkAdmin, userController.getAll);

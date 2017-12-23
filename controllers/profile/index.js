@@ -1,15 +1,10 @@
-/** @type {User} */
 const User = require('../../models/user');
-/**
- * Responds with the profile of the currently logged in user
- * @param {*} req 
- * @param {*} res 
- */
+const UserSerializer = require('../../serializers').users;
+
 const info = (req, res) => {
   if (req.user && req.user.id) {
-    return res.send(User.groom(req.user));
+    return res.send(UserSerializer(User.tidy(req.user)));
   }
-  res.status(404).send({ err: 'user not found' });
 };
 
 const get = (req, res) => {
