@@ -11,7 +11,7 @@ module.exports = (app) => {
   app.use(interceptor((req, res) => {
     const url = req.originalUrl;
     return {
-      isInterceptable: () => /json/.test(res.get('Content-Type')),
+      isInterceptable: () => /json/.test(res.get('Content-Type')) && res.status === 200,
       intercept: (body, send) => {
         const parsed = JSON.parse(body);
         const data = {

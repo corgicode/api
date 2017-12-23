@@ -24,7 +24,7 @@ const challengeSchema = new Schema({
     required: [true, 'A number is required for challenges'],
     index: { unique: true },
   },
-  title: { 
+  title: {
     type: String,
     required: [true, 'Title is required'],
   },

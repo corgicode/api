@@ -21,6 +21,7 @@ const auth = require('./auth');
 app.use(require('connect-logger')({/* options */}));
 
 app.use(bodyParser.json());
+app.use(bodyParser.json({ type: 'application/vnd.api+json' }));
 
 app.use(function(req, res, next) {
   req.start = Date.now();

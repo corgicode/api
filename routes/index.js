@@ -8,7 +8,7 @@
 const routes = require('express').Router();
 const controllers = require('../controllers');
 const config = require('../config');
-
+const ErrorSerializer = require('../serializers').error;
 
 const submitController = controllers.submit;
 const profileController = controllers.profile;
@@ -16,12 +16,32 @@ const challengeController = controllers.challenge;
 const userController = controllers.user;
 const commentController = controllers.comment;
 
-
 const checkAdmin = [(req, res, next) => {
   if (req.get('apikey') === config.ADMIN_API_KEY) {
     return next();
   }
-  return res.status(401).send({ message: 'A valid api key is needed for this request' });
+  return res.status(401).send(ErrorSerializer({ status: 401, title: 'A valid api key is needed for this request' }));
+}];
+
+const checkLogin = [(req, res, next) => {
+  if (!req.user || !req.user._id) {
+    return res.status(401).send(ErrorSerializer({ status: 401, title: 'Must be logged in' }));
+  }
+  return next();
+}];
+
+const checkData = [(req, res, next) => {
+  if (!req.body.data && req.body.data.attributes) {
+    return res.status(422).send(ErrorSerializer({ status: 422, title: 'Missing data' }));
+  }
+  return next();
+}];
+
+const checkId = [(req, res, next) => {
+  if (!req.params.id && (!req.body.data || req.body.data.id)) {
+    return res.status(422).send(ErrorSerializer({ status: 422, title: 'Missing id' }));
+  }
+  return next();
 }];
 
 routes.post('/submit', submitController.new);
@@ -39,10 +59,10 @@ routes.put('/profile', profileController.update);
 routes.get('/users', checkAdmin, userController.getAll);
 routes.get('/user/:id', checkAdmin, userController.findById);
 
-routes.post('/challenge', checkAdmin, challengeController.new);
-routes.get('/challenge/all', challengeController.getAll);
-routes.put('/challenge/:id', checkAdmin, challengeController.update);
-routes.get('/challenge/:id', checkAdmin, challengeController.getById);
+routes.post('/challenge', checkAdmin, checkLogin, checkData, challengeController.post);
+routes.get('/challenges', checkAdmin, challengeController.getAll);
+routes.put('/challenges/:id', checkAdmin, checkLogin, checkId, checkData, challengeController.update);
+routes.get('/challenges/:id', checkId, challengeController.getById);
 
 routes.post('/comment', commentController.new);
 routes.get('/comment/:id', commentController.getById);
