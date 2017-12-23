@@ -6,29 +6,16 @@ FROM node:8
 #   && npm install fs-extra \
 #   && sed -i -e s/graceful-fs/fs-extra/ -e s/fs\.rename/fs.move/ ./lib/utils/rename.js
 
-# upgrade npm
-# RUN npm install -g npm
-# Install nodemon
+RUN mkdir /src
+
 RUN npm install nodemon -g
-# Install grunt
-# RUN npm install -g grunt
 
-# Provides cached layer for node_modules
-# ADD package.json /tmp/package.json
-# RUN cd /tmp && npm install
-# RUN mkdir -p /src && cp -a /tmp/node_modules /src/
-# Not using the cache option, buggy on ubuntu
-
-RUN mkdir -p /src
 WORKDIR /src
-
-ADD . /src
-
+ADD package.json /src/package.json
 RUN npm install
 
-# Expose port
-EXPOSE 3000
-EXPOSE 5858
+ADD nodemon.json /src/nodemon.json
 
-# Grunt will build the files, start nodemon and watch for changes
-CMD ["nodemon -e '.js' index.js"]
+EXPOSE 3000
+
+CMD npm start
