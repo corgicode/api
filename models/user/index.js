@@ -80,4 +80,16 @@ userSchema.statics.tidy = (user, restrict) => {
   return data;
 }
 
+userSchema.statics.auth = (user) => {
+  if (!user) {
+    return {};
+  }
+
+  let data = {};
+  data.id = user._id;
+  data.username = user.username;
+  data.profile_url = user.profile_url;
+  return data;
+}
+
 module.exports = mongoose.model('User', userSchema);
