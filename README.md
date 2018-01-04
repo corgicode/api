@@ -10,9 +10,6 @@ Checkout our progress on [![Waffle.io](https://badge.waffle.io/corgicode/api.svg
  believes that junior developers have a difficulty landing their first
  programming career.
 
- For instructions on getting started, look at
- [contributing.md](CONTRIBUTING.md).
-
 # Contributing
 
 ## Installing
