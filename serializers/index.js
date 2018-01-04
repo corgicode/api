@@ -7,6 +7,7 @@ const to_jsonapi = function (result, type, fn) {
         type: type,
         id: item._id,
         attributes: fn ? fn(item) : item,
+        relationships: {},
       });
     });
   } else if (typeof result === 'object') {
@@ -15,6 +16,7 @@ const to_jsonapi = function (result, type, fn) {
       type: type,
       id: result._id,
       attributes: fn ? fn(result) : result,
+      relationships: {},
     });
   } else {
     datajson.push({
@@ -31,6 +33,10 @@ const challenges = function (docs, fn) {
 }
 
 const users = function (docs, fn) {
+  return to_jsonapi(docs, 'users', fn);
+}
+
+const profile = function (docs, fn) {
   return to_jsonapi(docs, 'users', fn);
 }
 
@@ -75,4 +81,5 @@ module.exports = {
   users,
   error,
   errors,
+  profile,
 };
