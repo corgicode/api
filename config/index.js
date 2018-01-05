@@ -12,7 +12,7 @@ const GITHUB_APP_NAME = Helpers.getEnv('GITHUB_APP_NAME');
 
 const ADMIN_API_KEY = Helpers.getEnv('ADMIN_API_KEY');
 
-const BASE_URL = Helpers.getEnv('BASE_URL', 'http://localhost:3000/');
+const BASE_URL = Helpers.getEnv('BASE_URL', 'http://localhost:3001');
 
 const VERSION = require('../package.json').version;
 

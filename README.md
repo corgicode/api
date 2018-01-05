@@ -64,12 +64,15 @@ GITHUB_CLIENT_SECRET
 GITHUB_CALLBACK_URL
 GITHUB_APP_NAME
 ADMIN_API_KEY
+BASE_URL
 ```
 
 The github ones are pretty self explanatory, register an application [here](https://github.com/settings/applications/new),
 is used for authentication and to get some information about the users.
 
 The Admin api key is a key that can be included in the request headers to allow for admin access, temp solution.
+
+Base url is mostly used to redirect to routes in the front end.
 
 ## Developing
 

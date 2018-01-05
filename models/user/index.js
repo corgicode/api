@@ -40,6 +40,9 @@ const userSchema = new Schema({
     twitter_url: String,
     github_url: String,
     company: String,
+    blog: String,
+    github_followers: String,
+    public_repos: String,
     hireable: { type: Boolean, default: false },
   },
   submissions : [{ type: ObjectId, ref: 'Submit' }],
@@ -77,6 +80,7 @@ userSchema.statics.tidy = (user, restrict) => {
   if (restrict) return data;
   data.submissions = user.submissions;
   data.profile = user.profile;
+  data.accounts = user.accounts;
   return data;
 }
 

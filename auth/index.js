@@ -8,12 +8,12 @@ auth.get('/github',
 auth.get('/github/callback',
   passport.authenticate('github', { failureRedirect: '/user/signup' }),
 (req, res) => {
-  res.redirect(`/profile/?success=${Config.GITHUB_APP_NAME}`);
+  res.redirect(`${Config.BASE_URL}/profile/?success=${Config.GITHUB_APP_NAME}`);
 });
 
 auth.get('/logout', (req, res) => {
   req.logout();
-  res.redirect('/');
+  res.redirect(`${Config.BASE_URL}/`);
 });
 
 auth.all('*', (req, res) => {
