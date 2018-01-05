@@ -59,7 +59,8 @@ routes.put('/profile', checkLogin, profileController.update);
 
 // routes.get('/user/all', checkAdmin, userController.getAll);
 routes.get('/users', checkAdmin, userController.getAll);
-routes.get('/user/:id', checkAdmin, userController.findById);
+routes.get('/users/:id', checkAdmin, userController.findById);
+routes.patch('/users/:id', checkLogin, checkData, userController.update);
 
 routes.post('/challenge', checkAdmin, checkLogin, checkData, challengeController.post);
 routes.get('/challenges', checkAdmin, challengeController.getAll);
