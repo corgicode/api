@@ -17,7 +17,7 @@ const get = (req, res) => {
       if (user === null || (user.deleted)) {
         return res.status(404).send({ err: 'user not found' });
       }
-      return res.send(ProfileSerializer(User.tidy(req.user, false)));
+      return res.send(ProfileSerializer(User.tidy(user, false)));
     });
   }
   return res.status(422).send({ error: 'missing user id' });
