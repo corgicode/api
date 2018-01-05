@@ -5,7 +5,7 @@ const UserSerializer = require('../../serializers').users;
 module.exports = {
     update: (req, res) => {
         const data = req.body.data || { attributes: {}};
-        UserModel.findByIdAndUpdate(req.user.id, { $set: data.attributes }, {upsert: true})
+        UserModel.findByIdAndUpdate(req.user.id, { $set: data.attributes }, { upsert: true, new: true })
         .then((doc) => {
             res.send(UserSerializer(UserModel.tidy(doc)));
         }).catch((err) => {
