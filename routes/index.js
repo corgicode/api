@@ -64,6 +64,7 @@ routes.patch('/users/:id', checkLogin, checkData, userController.update);
 
 routes.post('/challenge', checkAdmin, checkLogin, checkData, challengeController.post);
 routes.get('/challenges', challengeController.get);
+routes.get('/challenge/:number', challengeController.getByNumber);
 routes.put('/challenges/:id', checkAdmin, checkLogin, checkId, checkData, challengeController.update);
 routes.get('/challenges/:id', checkId, challengeController.getById);
 
