@@ -31,7 +31,7 @@ const checkLogin = [(req, res, next) => {
 }];
 
 const checkData = [(req, res, next) => {
-  if (!req.body.data && req.body.data.attributes) {
+  if (!req.body && req.body.attributes) {
     return res.status(422).send(ErrorSerializer({ status: 422, title: 'Missing data' }));
   }
   return next();
@@ -63,7 +63,7 @@ routes.get('/users/:id', checkAdmin, userController.findById);
 routes.patch('/users/:id', checkLogin, checkData, userController.update);
 
 routes.post('/challenge', checkAdmin, checkLogin, checkData, challengeController.post);
-routes.get('/challenges', checkAdmin, challengeController.getAll);
+routes.get('/challenges', challengeController.get);
 routes.put('/challenges/:id', checkAdmin, checkLogin, checkId, checkData, challengeController.update);
 routes.get('/challenges/:id', checkId, challengeController.getById);
 

@@ -44,7 +44,18 @@ const post = (req, res) => {
     cache.del('cc_challenges');
     res.status(201).send(ChallengeSerializer(doc));
   }).catch((err) => {
-    res.status(500).send(ErrorsSerializer(err))
+    res.status(500).send(ErrorsSerializer(err));
+  });
+};
+
+const get = (req, res) => {
+  ChallengeModel.find({}, (err, list) => {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log('Retrieved submissions', list.length);
+      res.send(ChallengeSerializer(list));
+    }
   });
 };
 
@@ -53,4 +64,5 @@ module.exports = {
   getById,
   update,
   post,
+  get,
 };
