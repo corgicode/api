@@ -59,10 +59,23 @@ const get = (req, res) => {
   });
 };
 
+const getByNumber = (req, res) => {
+  ChallengeModel.findOne({ number : req.params.number }, (err, doc) => {
+    if (err) {
+      console.error(err);
+      res.status(500).send(ErrorsSerializer(err));
+    } else {
+      console.log('Retrieved submission by number', req.params.number);
+      res.send(ChallengeSerializer(doc));
+    }
+  });
+};
+
 module.exports = {
   getAll,
   getById,
   update,
   post,
   get,
+  getByNumber,
 };
