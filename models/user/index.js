@@ -24,6 +24,13 @@ const userSchema = new Schema({
   name: String,
   avatar: Object,
   heroImage: Object,
+  projects: [
+    {
+      url: String,
+      name: String,
+      description: String,
+    }
+  ],
   deleted: { type: Boolean, default: false },
   flagged: { type: Boolean, default: false },
   private: { type: Boolean, default: false },
