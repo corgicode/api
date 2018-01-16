@@ -24,6 +24,13 @@ const userSchema = new Schema({
   name: String,
   avatar: Object,
   heroImage: Object,
+  projects: [
+    {
+      url: String,
+      name: String,
+      description: String,
+    }
+  ],
   deleted: { type: Boolean, default: false },
   flagged: { type: Boolean, default: false },
   private: { type: Boolean, default: false },
@@ -77,6 +84,7 @@ userSchema.statics.tidy = (user, restrict) => {
   data.username = user.username;
   data.github_id = user.github_id;
   data.profile_url = user.profile_url;
+  data.projects = user.projects || [];
   if (restrict) return data;
   data.submissions = user.submissions;
   data.profile = user.profile;
