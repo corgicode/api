@@ -1,31 +1,15 @@
 const SubmitModel = require('../../models/submit');
+const SubmitSerializer = require('../../serializers').submit;
 
 const newSubmission = (req, res) => {
-  if (!req.user || !req.user._id) {
-    return res.status(401).send({ error: 'must login to send a submission' });
-  }
-  if (!req.body.data || !req.body.data.challenge) {
-    return res.status(422).send({ error: 'challenge id is missing' });
-  }
-  const data = req.body.data || {};
+  const data = req.body.data || { attributes: {}};
   data._user = req.user._id;
-  let promise;
-  // check if the user has a submission already, otherwise create a new one
-  const query = { _user: req.user._id, challenge: req.body.data.challenge };
-  if (req.body.data._id) {
-    promise = SubmitModel.findOne(query).then((doc) => {
-      console.log(doc);
-      const obj = Object.assign(doc, data);
-      return obj.save();
-    });
-  } else {
-    const submission = new SubmitModel(data);
-    promise = submission.save();
-  }
-  return promise.then((err, doc) => {
-    res.status(200).send({ data, doc });
+  const submit = SubmitModel({ ...data.attributes, _user: req.user._id });
+  console.log(submit);
+  submit.save().then((doc) => {
+      res.send(SubmitSerializer(doc));
   }).catch((err) => {
-    res.status(500).send({ error: err });
+      res.status(503).send({ error: 'server error catched', err });
   });
 };
 
