@@ -1,5 +1,5 @@
 // https://stackoverflow.com/questions/35906800/express-how-to-implement-the-json-api
-const to_jsonapi = function (result, type, fn) {
+const to_jsonapi = function (result = {}, type, fn) {
   const datajson = [];
   if (Array.isArray(result)) {
     result.forEach(function(item) {
@@ -10,7 +10,7 @@ const to_jsonapi = function (result, type, fn) {
         relationships: {},
       });
     });
-  } else if (typeof result === 'object') {
+  } else if (typeof result === 'object' && result !== null) {
     // Happens when there is only one item
     datajson.push({
       type: type,
@@ -38,6 +38,10 @@ const users = function (docs, fn) {
 
 const profile = function (docs, fn) {
   return to_jsonapi(docs, 'users', fn);
+}
+
+const submit = function (docs, fn) {
+  return to_jsonapi(docs, 'submit', fn);
 }
 
 const error = function({ title = 'Unrecognized server error', source, detail, status = 500 }) {
@@ -81,5 +85,6 @@ module.exports = {
   users,
   error,
   errors,
+  submit,
   profile,
 };
