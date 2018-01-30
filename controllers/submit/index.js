@@ -56,15 +56,14 @@ const get = (req, res) => {
 };
 
 const getById = (req, res) => {
-  if (!req.params.id) {
-    return res.status(422).send({ error: 'missing submit id' });
-  }
   SubmitModel.findById(req.params.id)
   .populate('challenge')
   .populate('comments')
   .populate('_user', 'codecorgi_url avatar flagged username')
   .then((doc) => {
-    res.send(doc);
+    return res.send(SubmitSerializer(doc));
+  }).catch((err) => {
+    res.status(503).send({ error: 'server error catched', err });
   });
 };
 
