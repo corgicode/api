@@ -1,5 +1,7 @@
 const SubmitModel = require('../../models/submit');
+const ChallengeModel = require('../../models/challenge');
 const SubmitSerializer = require('../../serializers').submit;
+const ErrorSerializer = require('../../serializers').error;
 
 const newSubmission = (req, res) => {
   const data = req.body.data || { attributes: {}};
@@ -79,6 +81,22 @@ const getByIdWithComments = (req, res) => {
   });
 };
 
+const getForUserAndChallenge = (req, res) => {
+  ChallengeModel.findOne({ number: req.params.number }).then(doc => {
+    if (!doc) {
+      res.status(404).send(ErrorSerializer({ status: 404, title: `Didn't find a challenge with number ${req.params.number}`}));
+    }
+    return SubmitModel.findOne({ challenge: doc.id, _user: req.user.id });
+  }).then(doc => {
+    if (!doc) {
+      res.status(404).send(ErrorSerializer({ status: 404, title: `Didn't find a submission for challenge #${req.params.number}`}));
+    }
+    res.send(SubmitSerializer(doc));
+  }).catch(err => {
+    res.status(503).send(ErrorSerializer({ status: 503, title: 'Failed to retrieve a submission for user and challenge', ...err }));
+  });
+}
+
 module.exports = {
   new: newSubmission,
   getAll,
@@ -86,4 +104,5 @@ module.exports = {
   findByUser,
   getById,
   getByIdWithComments,
+  getForUserAndChallenge,
 };

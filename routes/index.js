@@ -46,6 +46,7 @@ const checkId = [(req, res, next) => {
 
 routes.post('/submit', checkLogin, checkData, submitController.new);
 routes.get('/submit/:id', checkId, submitController.getById);
+routes.get('/submit/user/:number', checkLogin, submitController.getForUserAndChallenge);
 routes.get('/submit/get', submitController.get);
 routes.get('/submit/all', submitController.getAll);
 routes.get('/submit/comments/:id', submitController.getByIdWithComments);
