@@ -1,5 +1,4 @@
 const mongoose = require('../');
-const md = require('marked');
 
 const Schema = mongoose.Schema;
 const ObjectId = mongoose.Schema.Types.ObjectId;
@@ -15,7 +14,7 @@ const SubmitSchema = new Schema({
     required: [true, 'Challenge id is required'],
     ref: 'Challenge',
   },
-  comments: [{ 
+  comments: [{
     type: ObjectId,
     ref: 'Comment',
   }],
@@ -34,12 +33,6 @@ const SubmitSchema = new Schema({
   timestamps: true,
 });
 
-SubmitSchema.virtual('rendered_advantage').get(function() {  
-    return this.advantage ? md(this.advantage) : '';
-});
-
-SubmitSchema.virtual('rendered_struggle').get(function() {  
-    return this.struggle ? md(this.struggle) : '';
-});
+SubmitSchema.index({ _user: 1, challenge: 1 }, { unique: true });
 
 module.exports = mongoose.model('Submit', SubmitSchema);
