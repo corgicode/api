@@ -44,7 +44,7 @@ const submit = function (docs, fn) {
   return to_jsonapi(docs, 'submit', fn);
 }
 
-const error = function({ title = 'Unrecognized server error', source, detail, status = 500 }) {
+const error = function({ title = 'Unrecognized server error', source, detail, status = 500, err }) {
   return {
     errors: [
       {
@@ -52,6 +52,7 @@ const error = function({ title = 'Unrecognized server error', source, detail, st
         source,
         title,
         detail,
+        err,
       }
     ]
   };

@@ -81,24 +81,41 @@ const getByIdWithComments = (req, res) => {
   });
 };
 
+const update = (req, res) => {
+  const data = req.body.data.attributes;
+  SubmitModel.findById(req.params.id)
+  .populate('challenge _user', 'codecorgi_url avatar flagged username')
+  .then((doc) => {
+    if (!doc) return res.status(404).send(ErrorSerializer({ status: 404, title: `Didn't find a submission with id ${req.params.id}`}));
+    if (String(doc._user.id) !== String(req.user.id)) return res.status(403).send(ErrorSerializer({ status: 403, title: `User ${req.user.id} is not authorized to change submission ${req.params.id}`}));
+    const obj = Object.assign(doc, data);
+    return obj.save();
+  }).then((doc) => {
+    res.send(SubmitSerializer(doc));
+  }).catch(err => {
+    return res.status(503).send(ErrorSerializer({ status: 503, title: `Failed to get or udpate submission ${req.params.id}`, err: err }));
+  });
+};
+
 const getForUserAndChallenge = (req, res) => {
   ChallengeModel.findOne({ number: req.params.number }).then(doc => {
     if (!doc) {
-      res.status(404).send(ErrorSerializer({ status: 404, title: `Didn't find a challenge with number ${req.params.number}`}));
+      return res.status(404).send(ErrorSerializer({ status: 404, title: `Didn't find a challenge with number ${req.params.number}`}));
     }
     return SubmitModel.findOne({ challenge: doc.id, _user: req.user.id });
   }).then(doc => {
     if (!doc) {
-      res.status(404).send(ErrorSerializer({ status: 404, title: `Didn't find a submission for challenge #${req.params.number}`}));
+      return res.status(404).send(ErrorSerializer({ status: 404, title: `Didn't find a submission for challenge #${req.params.number}`}));
     }
-    res.send(SubmitSerializer(doc));
+    return res.send(SubmitSerializer(doc));
   }).catch(err => {
-    res.status(503).send(ErrorSerializer({ status: 503, title: 'Failed to retrieve a submission for user and challenge', ...err }));
+    return res.status(503).send(ErrorSerializer({ status: 503, title: 'Failed to retrieve a submission for user and challenge', ...err }));
   });
 }
 
 module.exports = {
   new: newSubmission,
+  update,
   getAll,
   get,
   findByUser,
