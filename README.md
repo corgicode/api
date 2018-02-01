@@ -12,6 +12,10 @@ Checkout our progress on [![Waffle.io](https://badge.waffle.io/corgicode/api.svg
 
 # Contributing
 
+Todo :(
+
+Follow our [code of conduct on github](https://github.com/corgicode/frontend-react/blob/dev/CODE_OF_CONDUCT.md).
+
 ## Installing
 
 We're using docker and docker-compose to start the application.
