@@ -1,5 +1,4 @@
 node_modules
-nodemon.json
 npm-debug.log
 ecosystem.config.js
 .vagrant
@@ -8,3 +7,4 @@ jsconfig.json
 typings.json
 typings/
 mongo/data
+docker-compose.production.yml
