@@ -6,7 +6,7 @@ auth.get('/github',
   passport.authenticate('github', { scope: ['user:email'] }), () => null);
 
 auth.get('/github/callback',
-  passport.authenticate('github', { failureRedirect: '/user/signup' }),
+  passport.authenticate('github', { failureRedirect: `${Config.BASE_URL}/signup` }),
 (req, res) => {
   res.redirect(`${Config.BASE_URL}/profile/?success=${Config.GITHUB_APP_NAME}`);
 });
