@@ -13,6 +13,7 @@ const Config = require('../config');
 const User = require('../models/user');
 const _ = require('lodash');
 const redis = require('../config/redis');
+const Emails = require('../emails');
 
 function translateUser(profile) {
   return {
@@ -80,6 +81,7 @@ module.exports = (app) => {
         if (err) {
           return console.error('Error creating user', err);
         }
+        Emails.addSubscriber(user.email, { firstName: user.name });
         process.nextTick(() => done(null, user));
       });
     });

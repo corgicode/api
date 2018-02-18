@@ -1,6 +1,11 @@
 # NEXT VERSION
 
-# 0.91.0
+## 0.10.0
+- Added email functions to add new subscriber to MC
+- Started contributing to changelog again
+- Ignoring vscode config files
+
+## 0.91.0
 
 - Added caching to challenge and challenge/:number
 - Added cache expirations when adding or updating challenges

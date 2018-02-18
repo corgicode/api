@@ -8,3 +8,4 @@ typings.json
 typings/
 mongo/data
 docker-compose.production.yml
+.vscode

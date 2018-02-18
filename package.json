@@ -1,11 +1,11 @@
 {
   "name": "codecorgi",
-  "version": "0.9.1",
+  "version": "0.10.1",
   "description": "CodeCorgi is a place to showcase your developer profile",
   "main": "index.js",
   "scripts": {
     "test": "./node_modules/mocha/bin/mocha --reporter spec",
-    "start": "nodemon -e '.js' index.js"
+    "start": "nodemon -e '.js' index.js"i
   },
   "repository": {
     "type": "git",
@@ -35,6 +35,7 @@
     "express-interceptor": "^1.2.0",
     "express-session": "^1.15.0",
     "lodash": "^4.17.4",
+    "mailchimp-api-v3": "^1.8.0",
     "marked": "^0.3.9",
     "mocha": "^3.2.0",
     "mocha-eslint": "^3.0.1",

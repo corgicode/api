@@ -10,6 +10,9 @@ const GITHUB_CLIENT_SECRET = Helpers.getEnv('GITHUB_CLIENT_SECRET');
 const GITHUB_CALLBACK_URL = Helpers.getEnv('GITHUB_CALLBACK_URL');
 const GITHUB_APP_NAME = Helpers.getEnv('GITHUB_APP_NAME');
 
+const MAILCHIMP_API_KEY = Helpers.getEnv('MAILCHIMP_API_KEY', undefined);
+const MAILCHIMP_LIST_ID = Helpers.getEnv('MAILCHIMP_LIST_ID', undefined);
+
 const ADMIN_API_KEY = Helpers.getEnv('ADMIN_API_KEY');
 
 const BASE_URL = Helpers.getEnv('BASE_URL', 'http://localhost:3001');
@@ -24,4 +27,6 @@ module.exports = {
   ADMIN_API_KEY,
   VERSION,
   BASE_URL,
+  MAILCHIMP_API_KEY,
+  MAILCHIMP_LIST_ID,
 }
