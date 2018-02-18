@@ -1,5 +1,7 @@
 # NEXT VERSION
 
+## 0.10.1
+- Fixed typo on package.json
 ## 0.10.0
 - Added email functions to add new subscriber to MC
 - Started contributing to changelog again
