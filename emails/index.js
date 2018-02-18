@@ -3,7 +3,6 @@ const Mailchimp = require('mailchimp-api-v3');
 
 const mailchimp = Config.MAILCHIMP_API_KEY ? new Mailchimp(Config.MAILCHIMP_API_KEY) : {};
 
-console.log(Config);
 const addSubscriber = (email, data) => {
     if (!email || !Config.MAILCHIMP_API_KEY || !Config.MAILCHIMP_LIST_ID) {
         const msg = `Ignoring adding subscriber, missing params ${!email ? 'email': 'config'}`;
