@@ -1,11 +1,11 @@
 {
   "name": "codecorgi",
-  "version": "0.9.1",
+  "version": "0.10.1",
   "description": "CodeCorgi is a place to showcase your developer profile",
   "main": "index.js",
   "scripts": {
     "test": "./node_modules/mocha/bin/mocha --reporter spec",
-    "start": "nodemon -e '.js' index.js"
+    "start": "nodemon -e '.js' index.js"i
   },
   "repository": {
     "type": "git",
