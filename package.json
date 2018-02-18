@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "./node_modules/mocha/bin/mocha --reporter spec",
-    "start": "nodemon -e '.js' index.js"i
+    "start": "nodemon -e '.js' index.js"
   },
   "repository": {
     "type": "git",
