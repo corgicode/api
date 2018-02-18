@@ -69,6 +69,8 @@ GITHUB_CALLBACK_URL
 GITHUB_APP_NAME
 ADMIN_API_KEY
 BASE_URL
+MAILCHIMP_LIST_ID
+MAILCHIMP_API_KEY
 ```
 
 The github ones are pretty self explanatory, register an application [here](https://github.com/settings/applications/new),
