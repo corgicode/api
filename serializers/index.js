@@ -14,7 +14,7 @@ const to_jsonapi = function (result = {}, type, fn) {
     // Happens when there is only one item
     datajson.push({
       type: type,
-      id: result._id,
+      id: result._id || result.id,
       attributes: fn ? fn(result) : result,
       relationships: {},
     });
