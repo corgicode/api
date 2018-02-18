@@ -84,10 +84,10 @@ userSchema.statics.tidy = (user, restrict) => {
   data.username = user.username;
   data.github_id = user.github_id;
   data.profile_url = user.profile_url;
+  data.projects = user.projects;
   if (restrict) return data;
   data.submissions = user.submissions;
   data.profile = user.profile;
-  data.accounts = user.accounts;
   return data;
 }
 
