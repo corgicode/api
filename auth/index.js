@@ -9,7 +9,7 @@ auth.get('/github',
 auth.get('/github/callback',
   passport.authenticate('github', { failureRedirect: url.resolve(Config.BASE_URL, 'signup') }),
 (req, res) => {
-  res.redirect(url.resolve(Config.BASE_URL, '/profile/?success=${Config.GITHUB_APP_NAME'));
+  res.redirect(url.resolve(Config.BASE_URL, `/profile/?success=${Config.GITHUB_APP_NAME}`));
 });
 
 auth.get('/logout', (req, res) => {
