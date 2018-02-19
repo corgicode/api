@@ -1,6 +1,6 @@
 {
   "name": "codecorgi",
-  "version": "0.10.1",
+  "version": "0.10.2",
   "description": "CodeCorgi is a place to showcase your developer profile",
   "main": "index.js",
   "scripts": {
