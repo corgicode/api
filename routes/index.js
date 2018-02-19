@@ -48,10 +48,10 @@ routes.post('/submit', checkLogin, checkData, submitController.new);
 routes.get('/submit/:id', checkId, submitController.getById);
 routes.patch('/submit/:id', checkId, submitController.update);
 routes.get('/submit/user/:number', checkLogin, submitController.getForUserAndChallenge);
+routes.get('/submit/all/user/:id', checkId, submitController.findByUser);
 routes.get('/submit/get', submitController.get);
 routes.get('/submit/all', submitController.getAll);
 routes.get('/submit/comments/:id', submitController.getByIdWithComments);
-routes.get('/submit/user/:user_id', submitController.findByUser);
 
 routes.get('/profile/auth', checkLogin, profileController.info);
 routes.get('/profile/id/:id', profileController.get);

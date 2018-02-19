@@ -1,6 +1,6 @@
 # NEXT VERSION
 
-## 0.10.2
+## 0.10.3
 - Returning projects in user information
 - Endpoint to return submissions by user
 
