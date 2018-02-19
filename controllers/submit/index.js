@@ -16,12 +16,9 @@ const newSubmission = (req, res) => {
 };
 
 const findByUser = (req, res) => {
-  if (!req.params.user_id) {
-    return res.status(422).send({ error: 'missing user id' });
-  }
-  return SubmitModel.find({ _user: req.params.user_id }).populate('challenge').then((docs) => {
-    console.log(`Retrieved submissions for user: ${req.params.user_id} `, docs.length);
-    res.send(docs);
+  return SubmitModel.find({ _user: req.params.id }).populate('challenge').then((docs) => {
+    console.log(`Retrieved ${docs.length} submissions for user: ${req.params.id} `, docs.length);
+    res.send(SubmitSerializer(docs));
   }, (err) => {
     res.status(500).send({ err });
   });
