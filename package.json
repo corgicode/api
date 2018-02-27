@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "./node_modules/mocha/bin/mocha --reporter spec",
-    "start": "nodemon -e '.js' index.js"
+    "start": "nodemon -e '.js' index.js",
+    "migrate": "node migrations/index up"
   },
   "repository": {
     "type": "git",
