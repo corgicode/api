@@ -88,9 +88,10 @@ Trying to make it work as a command didn't work.
 
 ## Developing
 
-On your computer, run `npm install` in the root to get the code linting, and building tools
-needed to run the code. Decided to run the grunt in your local machine
-so you have more control on the output and state a opposed to run it in the VM.
+Optionally, on your computer, run `npm install` in the root to get the code linting, and some
+extra tools.
+
+The npm packages and other deps will be installed on the containers when you run `docker-compose build`.
 
 ### ESLint
 
@@ -147,7 +148,7 @@ For now that's all you need to know, you can find more information about git flo
 
 Detailed installation instructions [here](https://github.com/nvie/gitflow/wiki/Installation).
 
-## Dependencies: Backend
+## Dependencies
 
 The following are tools, packages or technologies used.
 
