@@ -80,6 +80,12 @@ The Admin api key is a key that can be included in the request headers to allow 
 
 Base url is mostly used to redirect to routes in the front end.
 
+## Migrations (Seed data)
+
+Make an admin request to `http://{BASE_URL}/api/migrate` to get seed data in your mongo database.
+
+Trying to make it work as a command didn't work.
+
 ## Developing
 
 On your computer, run `npm install` in the root to get the code linting, and building tools
