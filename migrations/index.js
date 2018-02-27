@@ -5,12 +5,11 @@
  * - Allow to run the down function in a migration */
 const Promise = require('bluebird');
 const ccAdminUser = require('./1519748712-codecorgi-admin-user.js');
-const mongoConnection = require('../config/mongo');
-// const challenges0to8 = require('./1519748712-challenges-0-to-8.js');
+const challenges0to8 = require('./1519748712-challenges-0-to-8.js');
 
 const migrations = [
     ccAdminUser,
-    // challenges0to8,
+    challenges0to8,
 ];
 
 const run = (dir, res) => {
