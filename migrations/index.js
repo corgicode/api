@@ -37,7 +37,3 @@ module.exports = {
     up,
     down,
 }
-
-require('make-runnable/custom')({
-    printOutputFrame: false
-});
