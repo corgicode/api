@@ -1,6 +1,9 @@
 # NEXT VERSION
 
 ## 0.11.0
+- Fixed eslint errors
+
+## 0.11.0
 - Created a system for migrations
 - Created migrations for the challenges
 
