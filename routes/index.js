@@ -9,6 +9,7 @@ const routes = require('express').Router();
 const controllers = require('../controllers');
 const config = require('../config');
 const ErrorSerializer = require('../serializers').error;
+const migrations = require('../migrations');
 
 const submitController = controllers.submit;
 const profileController = controllers.profile;
@@ -76,6 +77,8 @@ routes.put('/comment/:id', commentController.update);
 routes.delete('/comment/:id', commentController.delete);
 routes.get('/comments/submission/:id', commentController.findBySubmission);
 // routes.get('/comments/all', commentController.getAll);
+
+routes.get('/migrate/:id?', checkAdmin, migrations.up);
 
 routes.all('*', (req, res) => {
   res.status(403).json({ message: 'Please use a valid endpoint!' });

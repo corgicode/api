@@ -4,7 +4,7 @@ Initializes the connection to the mongo database
 const mongoose = require('../models');
 const db = require('../models').connection;
 
-module.exports = () => {
+module.exports = (callback) => {
   let MONGO_DB;
   let DOCKER_DB = process.env.MONGO_PORT;
   if (DOCKER_DB) {
@@ -19,5 +19,9 @@ module.exports = () => {
 
   db.once('open', () => {
     console.log(`connected to mongo db: ${MONGO_DB}`);
+    if (typeof callback === 'function') {
+      console.log('Running callback');
+      callback();
+    }
   });
 }

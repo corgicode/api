@@ -11,5 +11,8 @@ describe('Code must pass Eslint validation', () => {
     'lib/**/*.js',
     'auth/**/*.js',
     'config/**/*.js',
+    'migrations/**/*.js',
+    'emails/**/*.js',
+    'serializers/**/*.js',
   ], {});
 });

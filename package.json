@@ -1,11 +1,12 @@
 {
   "name": "codecorgi",
-  "version": "0.10.3",
+  "version": "0.11.0",
   "description": "CodeCorgi is a place to showcase your developer profile",
   "main": "index.js",
   "scripts": {
     "test": "./node_modules/mocha/bin/mocha --reporter spec",
-    "start": "nodemon -e '.js' index.js"
+    "start": "nodemon -e '.js' index.js",
+    "migrate": "node migrations/index up"
   },
   "repository": {
     "type": "git",
@@ -19,7 +20,7 @@
   },
   "homepage": "https://github.com/corgicode/api",
   "dependencies": {
-    "bluebird": "^3.4.7",
+    "bluebird": "^3.5.1",
     "body-parser": "^1.16.0",
     "chai": "^3.5.0",
     "connect-logger": "0.0.1",
