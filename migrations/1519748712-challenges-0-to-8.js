@@ -238,12 +238,12 @@ const challenges = [
         "body": {
             "description": "Request a CSV file and display the data on an HTML table.\n\nThe CSV file data/customers.csv will return customer information in this order:\n\n`ID, First Name, Last Name, Email, Job Title, City`.\n\nFor every row in the CSV and column add that data to the table.",
             "short_description": "Request a CSV file and display the data on an HTML table.",
-            "extra_points": "Serve a single or none CSS file.",
+            "extra_points": "Make the tables prettier, by adding some useful interacting elements like changing the active row color See [here for some inspiration](https://colorlib.com/wp/css3-table-templates/).",
             "attachments": []
         },
         "head": {
-            "owner": "Scatha the Worm",
-            "difficulty": "2",
+            "owner": "Angmar",
+            "difficulty": "3",
             "priority": "Critical",
             "challenge_type": "Feature",
             "date_created": "2017-04-27T00:00:00.000Z",
@@ -251,11 +251,76 @@ const challenges = [
             "status": "New"
         }
     },
+    {
+        "title": "Display data from API (React)",
+        "short_title": "display-users",
+        "visible": true,
+        "number": "6",
+        "technical_notes": `
+Check out the Readme that the React team put together as an intro [here](https://github.com/code-corgi/challenge-6-list-users/blob/master/ReactIntro.md).
 
+Learn about the [Container Components Pattern](https://medium.com/@learnreact/container-components-c0e67432e005).
 
+Learn about [React Redux](https://redux.js.org/docs/basics/UsageWithReact.html).
 
+Check out [Isomorphic Fetch](https://www.npmjs.com/package/isomorphic-fetch).
+        `,
+        "coding": `
+Using your github account, fork this repo and clone it to your machine. Use npm start to run the application locally using webpack-dev-server.
 
+Add redux and create the reducers to add the users to the state.
 
+Add isomorphic fetch polifyll and es6-promise to request data from the API.
+
+Create a dumb component that renders every user.
+
+Create a container component that fetches data from an API and displays it using the dumb component.
+        `,
+        "source": [{
+            "name": "Github",
+            "url": "https://github.com/code-corgi/challenge-6-list-users"
+        },
+        {
+            "name": "Zip",
+            "url": "https://github.com/code-corgi/challenge-6-list-users/archive/master.zip"
+        }
+        ],
+        "tags": [
+            "CSS",
+            "HTML",
+            "Javascript",
+            "API",
+            "React",
+            "Redux",
+        ],
+        "body": {
+            "description": `
+For our dating site we want to list singles in the area, so that visitors can get to chose who they'd like to go out with and get in touch.
+
+The data is found in this endpoint: [https://randomuser.me/api/?results=20](https://randomuser.me/api/?results=20).
+
+Most of the design is ready, but the data being shown right now is hardcoded, and the current version has everything on the same file, which is a pretty crappy way to use React.
+            `,
+            "short_description": "For our dating site we want to list singles in the area, so that visitors can get to chose who they'd like to go out with and get in touch.",
+            "extra_points": `
+We expect this challenge to be kinda short, if you get stuck reach out or move to a different one, jumping into react/redux with no react experience can be challenging. Be careful with the commits and follow some of React best practices, like folder and file organization.
+
+Check out the coding style and make sure the code passes the linter. npm run lint.
+
+Test your components and utility functions.
+            `,
+            "attachments": []
+        },
+        "head": {
+            "owner": "Azog",
+            "difficulty": "3",
+            "priority": "Critical",
+            "challenge_type": "Feature",
+            "date_created": "2018-01-03T00:00:00.000Z",
+            "resolution": "Unresolved",
+            "status": "New"
+        }
+    },
     {
         "title": "Turn your portfolio into a progressive web app",
         "short_title": "progressive-web-app-portfolio",
@@ -290,6 +355,59 @@ const challenges = [
             "priority": "Critical",
             "challenge_type": "Feature",
             "date_created": "2018-02-19T00:00:00.000Z",
+            "resolution": "Unresolved",
+            "status": "New"
+        }
+    },
+    {
+        "title": "Adapt a Template",
+        "short_title": "adapt-template",
+        "visible": true,
+        "number": "8",
+        "technical_notes": `
+There are no particular framework or library you'll need to use, this template uses bootstrap and some familiarity with it can help. You can add anything else on top you feel comfortable with. Lite code is preferred, is a simple task and should't take you a long time.
+        `,
+        "coding": `
+To create your answer follow this steps:
+
+* Fork the repo to your account, or download the zip file
+* Solve the ticket
+* Commit your code
+* Push your changes
+* [Publish your version in Github Pages](https://pages.github.com/) (optional)
+* [Submit your response](https://codecorgi.co/submit/new/8)
+        `,
+        "source": [{
+            "name": "Github",
+            "url": "https://github.com/code-corgi/challenge-8-adapt-template"
+        },
+        {
+            "name": "Zip",
+            "url": "https://github.com/code-corgi/challenge-8-adapt-template/archive/master.zip"
+        }
+        ],
+        "tags": [
+            "CSS",
+            "HTML",
+        ],
+        "body": {
+            "description": `
+We decided to save some time and got a template to use, the code is kind of a mess, and there's a lot of extra files
+but given the rush that's ok for now. The template has sections for your work, personal information, projects and some
+education, at your discretion, change your information on the template in the appropiate parts.
+            `,
+"short_description": "Change the information on a template to include your personal details.",
+"extra_points": `
+Modify the colors and other variables on the template to make it more like you, and look less standard.
+            `,
+            "attachments": []
+        },
+        "head": {
+            "owner": "Smaug",
+            "difficulty": "1",
+            "priority": "Critical",
+            "challenge_type": "Feature",
+            "date_created": "2018-03-01T00:00:00.000Z",
             "resolution": "Unresolved",
             "status": "New"
         }
