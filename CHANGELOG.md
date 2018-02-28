@@ -1,5 +1,9 @@
 # NEXT VERSION
 
+## 0.11.0
+- Created a system for migrations
+- Created migrations for the challenges
+
 ## 0.10.3
 - Returning projects in user information
 - Endpoint to return submissions by user
