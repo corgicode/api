@@ -1,4 +1,5 @@
 # NEXT VERSION
+- Changed bindIp on mongo/config to fix security leak
 
 ## 0.11.0
 - Fixed eslint errors
