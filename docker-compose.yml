@@ -2,12 +2,19 @@ redis:
     image: redis
     ports:
         - "6379:6379"
+
 mongo:
-    build: ./mongo
+    image: mongo:latest
+    container_name: mongo
+    environment:
+        - MONGO_DATA_DIR=/data/db
+        - MONGO_LOG_DIR=/var/log/mongodb/mongod.log
     volumes:
-        - './mongo/data:/data/db'
+    - './mongo/data:/data/db'
     ports:
-        - "27017:27017"
+        - 27017:27017
+    command: mongod --smallfiles
+
 node:
     build: ./
     links:
