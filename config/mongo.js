@@ -3,17 +3,21 @@ Initializes the connection to the mongo database
 */
 const mongoose = require('../models');
 const db = require('../models').connection;
+const Helpers = require('../lib/helpers');
 
 module.exports = (callback) => {
   let MONGO_DB;
-  let DOCKER_DB = process.env.MONGO_PORT;
+  const DOCKER_DB = process.env.MONGO_PORT;
+  MONGO_DB = 'mongodb://localhost/codecorgidata';
   if (DOCKER_DB) {
     MONGO_DB = DOCKER_DB.replace( 'tcp', 'mongodb' ) + '/codecorgidata';
-  } else {
-    MONGO_DB = 'mongodb://localhost/codecorgidata';
   }
 
-  mongoose.connect(MONGO_DB, { useMongoClient: true });
+  mongoose.connect(MONGO_DB, {
+    useMongoClient: true,
+    user: Helpers.getEnv('MONGO_ROOT_USERNAME', undefined),
+    pass: Helpers.getEnv('MONGO_ROOT_PASSWORD', undefined),
+  });
 
   db.on('error', console.error.bind(console, 'connection error:'));
 
