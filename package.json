@@ -39,7 +39,7 @@
     "mailchimp-api-v3": "^1.8.0",
     "marked": "^0.3.9",
     "mocha": "^3.2.0",
-    "mocha-eslint": "^3.0.1",
+    "mocha-eslint": "^4.1.0",
     "moment": "^2.18.1",
     "mongoose": "^4.8.1",
     "nodemon": "^1.13.3",
