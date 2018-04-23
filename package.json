@@ -43,7 +43,7 @@
     "moment": "^2.18.1",
     "mongoose": "^4.8.1",
     "nodemon": "^1.13.3",
-    "passport": "^0.3.2",
+    "passport": "^0.4.0",
     "passport-github2": "^0.1.10",
     "redis": "^2.7.1",
     "url": "^0.11.0"
