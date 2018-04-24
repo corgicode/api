@@ -41,7 +41,7 @@
     "mocha": "^3.2.0",
     "mocha-eslint": "^3.0.1",
     "moment": "^2.18.1",
-    "mongoose": "^4.8.1",
+    "mongoose": "^5.0.16",
     "nodemon": "^1.13.3",
     "passport": "^0.3.2",
     "passport-github2": "^0.1.10",
