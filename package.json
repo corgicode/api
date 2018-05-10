@@ -36,7 +36,7 @@
     "express-interceptor": "^1.2.0",
     "express-session": "^1.15.0",
     "lodash": "^4.17.5",
-    "mailchimp-api-v3": "^1.8.0",
+    "mailchimp-api-v3": "^1.8.1",
     "marked": "^0.3.9",
     "mocha": "^3.2.0",
     "mocha-eslint": "^3.0.1",
