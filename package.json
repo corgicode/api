@@ -21,7 +21,7 @@
   "homepage": "https://github.com/corgicode/api",
   "dependencies": {
     "bluebird": "^3.5.1",
-    "body-parser": "^1.16.0",
+    "body-parser": "^1.18.3",
     "chai": "^3.5.0",
     "connect-logger": "0.0.1",
     "connect-mongo": "^1.3.2",
